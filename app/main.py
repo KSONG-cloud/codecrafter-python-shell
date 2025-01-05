@@ -16,7 +16,7 @@ def main():
 
         # If there is a command, break it up into command and value
         if " " in command_input:
-            command, val= command_input.split()
+            command, val= command_input.split(" ", 1)
         else:
             command = command_input
 
