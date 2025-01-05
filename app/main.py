@@ -8,6 +8,9 @@ def main():
         sys.stdout.flush
         # Wait for user input
         command=input()
+        if command=="exit 0":
+            return
+
         sys.stdout.write(f"{command}: command not found\n")
 
 
