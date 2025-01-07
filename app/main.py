@@ -52,6 +52,13 @@ def main():
                 print(f"{val} is {command_path}")
             else:
                 print(f"{val}: not found")
+        # Execute commands: Use os.system() [os.system() method 
+        # executes the command (a string) in a subshell. This method 
+        # is implemented by calling the Standard C function system() 
+        # and has the same limitations. If the command generates any 
+        # output, it is sent to the interpreter’s standard output stream. 
+        elif os.path.isfile(command):
+            os.system(command)
         else:
             sys.stdout.write(f"{command}: command not found\n")
 
