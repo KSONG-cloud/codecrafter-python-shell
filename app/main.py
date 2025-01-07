@@ -1,9 +1,15 @@
 import sys
+import os
 
 VALID_COMMANDS = ["echo", "exit", "type"]
 
 def main():
     # Uncomment this block to pass the first stage
+
+
+    PATH = os.environ.get("PATH")
+
+
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush
@@ -15,6 +21,8 @@ def main():
         command_input = input()
 
         # If there is a command, break it up into command and value
+        # Here instead of splitting, we can instead use .startswith()
+        # E.g. if command_input.startswith("echo"):
         if " " in command_input:
             command, val= command_input.split(" ", 1)
         else:
@@ -31,8 +39,17 @@ def main():
 
         # type command: check type of input
         elif command=="type":
+            
+            command_path = None
+            paths = PATH.split(":")
+            for path in paths:
+                if os.path.isfile(f"{path}/{val}"):
+                    command_path = f"{path}/{val}"
+
             if val in VALID_COMMANDS:
                 print(f"{val} is a shell builtin")
+            elif command_path:
+                print(f"{val} is {command_path}")
             else:
                 print(f"{val}: not found")
         else:
