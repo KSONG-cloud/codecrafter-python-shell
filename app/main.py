@@ -1,7 +1,7 @@
 import sys
 import os
 
-VALID_COMMANDS = ["echo", "exit", "type"]
+VALID_COMMANDS = ["echo", "exit", "pwd", "type"]
 
 def main():
     # Uncomment this block to pass the first stage
@@ -57,6 +57,9 @@ def main():
                 print(f"{val} is {command_path}")
             else:
                 print(f"{val}: not found")
+
+        elif command=="pwd":
+            print(os.getcwd)
 
         # Check for executables in PATH first
 
