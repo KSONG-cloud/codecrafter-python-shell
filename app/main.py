@@ -67,6 +67,7 @@ def main():
         # output, it is sent to the interpreter’s standard output stream. 
         elif os.path.isfile(command):
             os.system(f"{command} {val}")
+            continue
         else:
             for path in paths:
                 if os.path.isfile(f"{path}/{command}"):
