@@ -58,8 +58,20 @@ def main():
             else:
                 print(f"{val}: not found")
 
+
+        # print current working directory
         elif command=="pwd":
             print(os.getcwd())
+
+
+        # change directory
+        elif command=="cd":
+            try:
+                os.chdir(val)
+            except FileNotFoundError:
+                print(f"cd: {val}: No such file or directory")
+
+
 
         # Check for executables in PATH first
 
