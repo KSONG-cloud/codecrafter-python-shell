@@ -8,6 +8,7 @@ def main():
 
 
     PATH = os.environ.get("PATH")
+    HOME = os.environ.get("HOME")
 
     # print(PATH)
 
@@ -66,10 +67,13 @@ def main():
 
         # change directory
         elif command=="cd":
-            try:
-                os.chdir(val)
-            except FileNotFoundError:
-                print(f"cd: {val}: No such file or directory")
+            if val=="~":
+                os.chdir(HOME)
+            else:
+                try:    
+                    os.chdir(val)
+                except FileNotFoundError:
+                    print(f"cd: {val}: No such file or directory")
 
 
 
