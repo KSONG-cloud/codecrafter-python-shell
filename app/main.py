@@ -66,7 +66,7 @@ def main():
         # and has the same limitations. If the command generates any 
         # output, it is sent to the interpreter’s standard output stream. 
         elif os.path.isfile(command):
-            os.system(command)
+            os.system(f"{command} {val}")
         else:
             for path in paths:
                 if os.path.isfile(f"{path}/{command}"):
