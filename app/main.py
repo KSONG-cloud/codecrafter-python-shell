@@ -24,7 +24,7 @@ def main():
         # separating the paths from PATH
         paths = PATH.split(":")
 
-        print(command_input)
+        # print(command_input)
         # If there is a command, break it up into command and value
         # Here instead of splitting, we can instead use .startswith()
         # E.g. if command_input.startswith("echo"):
@@ -70,7 +70,7 @@ def main():
         else:
             for path in paths:
                 if os.path.isfile(f"{path}/{command}"):
-                    os.system(f"{path}/{command}")
+                    os.system(f"{path}/{command} {val}")
                     continue
                       
             sys.stdout.write(f"{command}: command not found\n")
