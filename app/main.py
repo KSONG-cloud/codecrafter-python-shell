@@ -59,7 +59,7 @@ def main():
                 print(f"{val}: not found")
 
         elif command=="pwd":
-            print(os.getcwd)
+            print(os.getcwd())
 
         # Check for executables in PATH first
 
