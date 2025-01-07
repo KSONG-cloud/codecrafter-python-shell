@@ -52,6 +52,9 @@ def main():
                 print(f"{val} is {command_path}")
             else:
                 print(f"{val}: not found")
+
+        # Check for executables in PATH first
+
         # Execute commands: Use os.system() [os.system() method 
         # executes the command (a string) in a subshell. This method 
         # is implemented by calling the Standard C function system() 
@@ -60,7 +63,13 @@ def main():
         elif os.path.isfile(command):
             os.system(command)
         else:
+            for path in paths:
+                if os.path.isfile(f"{path}/{command}"):
+                    os.system(f"{path}/{command}")
+                    continue
+                      
             sys.stdout.write(f"{command}: command not found\n")
+            continue
 
 
     
