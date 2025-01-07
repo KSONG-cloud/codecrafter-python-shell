@@ -9,6 +9,7 @@ def main():
 
     PATH = os.environ.get("PATH")
 
+    print(PATH)
 
     while True:
         sys.stdout.write("$ ")
@@ -21,7 +22,7 @@ def main():
         command_input = input()
 
         # separating the paths from PATH
-        paths = PATH.split(":")
+        paths = PATH.split(";")
 
 
         # If there is a command, break it up into command and value
