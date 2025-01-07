@@ -69,15 +69,18 @@ def main():
             os.system(f"{command} {val}")
             continue
         else:
+            command_found = False
             for path in paths:
                 if os.path.isfile(f"{path}/{command}"):
-                    print("HEY")
-                    print(path)
                     os.system(f"{path}/{command} {val}")
                     continue
-                      
-            sys.stdout.write(f"{command}: command not found\n")
-            continue
+            # If we find the executable. continue, 
+            # else say it's not found
+            if command_found:
+                continue
+            else:
+                sys.stdout.write(f"{command}: command not found\n")
+            
 
 
     
