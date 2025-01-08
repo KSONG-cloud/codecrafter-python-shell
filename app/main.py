@@ -70,7 +70,9 @@ def main():
         # echo command: print input
         if command=="echo":
             if val.startswith("'") and val.endswith("'"):
-                print(val[1:-1])
+                # single quotes processing
+                val_list = val.split("'")
+                print("".join(val_list))
             else:
                 # replace big whitespaces with one space if there is not single quotes
                 print(remove_big_whitespace(val))
