@@ -25,8 +25,10 @@ def file_splitter(files):
         
     return files_list
 
-
-
+# replace big whitespaces with one space 
+def remove_big_whitespace(text):
+    text_list = text.split()
+    return text_list.join(" ")
 
 
 def main():
@@ -70,7 +72,8 @@ def main():
             if val.startswith("'") and val.endswith("'"):
                 print(val[1:-1])
             else:
-                print(val)
+                # replace big whitespaces with one space if there is not single quotes
+                print(remove_big_whitespace(val))
 
         # type command: check type of input
         elif command=="type":
