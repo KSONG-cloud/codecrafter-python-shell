@@ -3,6 +3,32 @@ import os
 
 VALID_COMMANDS = ["echo", "exit", "pwd", "type"]
 
+
+# gets a continuous string of files and splits them into individual files, 
+# can handle whitespace in between quotes 
+def file_splitter(files):
+    NOTSTART = -1
+    start = NOTSTART
+    files_list = []
+    for i in range(len(files)):
+        # if we haven't started recording
+        if start==NOTSTART and files[i]=="'":
+            start = i
+            continue
+        
+        # we have started recording and reached the end
+        if start!=NOTSTART and files[i]=="'":
+            end = i
+            files_list.append(files[start: end+1 ])
+            start=NOTSTART
+            continue
+        
+    return files_list
+
+
+
+
+
 def main():
     # Uncomment this block to pass the first stage
 
@@ -41,7 +67,10 @@ def main():
         
         # echo command: print input
         if command=="echo":
-            print(val)
+            if val.startswith("'") and val.endswith("'"):
+                print(val[1:-1])
+            else:
+                print(val)
 
         # type command: check type of input
         elif command=="type":
@@ -67,6 +96,7 @@ def main():
 
         # change directory
         elif command=="cd":
+            # Default Home Case
             if val=="~":
                 os.chdir(HOME)
             else:
@@ -74,6 +104,15 @@ def main():
                     os.chdir(val)
                 except FileNotFoundError:
                     print(f"cd: {val}: No such file or directory")
+
+        # cat
+        elif command=="cat":
+            files = files_splitter(val)
+            text_list = []
+            for file in files:
+                text = open(file, 'r').read()
+                text_list.append(text)
+                text.close()
 
 
 
