@@ -112,7 +112,7 @@ def main():
 
         # cat
         elif command=="cat":
-            files = files_splitter(val)
+            files = file_splitter(val)
             text_list = []
             for file in files:
                 text = open(file, 'r').read()
