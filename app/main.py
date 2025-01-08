@@ -28,7 +28,7 @@ def file_splitter(files):
 # replace big whitespaces with one space 
 def remove_big_whitespace(text):
     text_list = text.split()
-    return text_list.join(" ")
+    return " ".join(text_list)
 
 
 def main():
